@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
             $table->string('nom', 100);
-            $table->text('description');
+            $table->string('slug', 100);
+            $table->text('description')->nullable(true);
             $table->decimal('prix', 10, 2);
-            $table->string('image');
+            $table->string('image')->nullable(true);
+            $table->integer('stock')->nullable(false)->default(0);
             $table->foreignId('categorie_id')->constrained('categories');
-            $table->timestamps();
+            //$table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
         });
     }
