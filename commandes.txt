@@ -1,0 +1,8 @@
+commandes
+-> commandes_lignes
+
+Commande ABC123	23/10/2024	200	40
+	Id		Qte	Produit		PUTTC	PrixTTC	TVA
+	Ligne 1		1 	bague or	150	150	 30
+	Ligne 2		2	boucle oreille	 25	 50	 10
+	Ligne ...
