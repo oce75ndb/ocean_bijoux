@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('categorie_id')->constrained('categories');
             //$table->timestamps();
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate(); 
 
         });
     }
