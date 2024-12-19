@@ -1,28 +1,69 @@
-@extends('layouts.app')
-
-@section('title', 'Accueil - Océan de Bijoux')
-
-@section('content')
-<section class="py-8">
-    <div class="container mx-auto text-center">
-        <h1 class="text-4xl font-bold mb-6">Bienvenue sur Océan de Bijoux</h1>
-        <p class="text-lg text-gray-700 mb-8">Découvrez nos collections uniques de colliers, bagues, bracelets et boucles d'oreilles.</p>
-
-        <h2 class="text-3xl font-bold mb-6">Nos Produits Phare</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($produits as $produit)
-                <div class="border rounded-lg p-4 bg-white shadow">
-                    <h3 class="text-xl font-semibold">{{ $produit->nom }}</h3>
-                    <p class="text-gray-700">{{ Str::limit($produit->description, 50) }}</p> <!-- Limite la description à 50 caractères -->
-                    <p class="text-gray-900 font-bold mt-2">{{ $produit->prix }} €</p>
-                    <a href="{{ route('produit.show', ['id' => $produit->id]) }}" class="text-blue-500 hover:underline">Voir le produit</a>
-                </div>
-            @endforeach
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Océan de Bijoux</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body class="bg-beige text-black font-serif">
+    <!-- En-tête -->
+    <header class="bg-gold shadow-md py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-black">Océan de Bijoux</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="{{ route('home') }}" class="text-black hover:text-beige">Accueil</a></li>
+                    <li><a href="/produits" class="text-black hover:text-beige">Produits</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <h2 class="text-3xl font-bold mt-12 mb-6">Explorez nos Catégories</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <a href="{{ route('categorie', ['id' => 1]) }}" class="block border rounded-lg p-4 bg-amber-100 text-yellow-950 text-center hover:bg-amber-200">Colliers</a>
-            <a href="{{ route('categorie', ['id' => 2]) }}" class="block border rounded-lg p-4 bg-amber-100 text-yellow-950 text-center hover:bg-amber-200">Bagues</a>
-            <a href="{{ route('categorie', ['id' => 3]) }}" class="block border rounded-lg p-4 bg-amber-100 text-yellow-950 text-center hover:bg-amber-200">Bracelets</a>
-            <a href="{{ route('categorie', ['id' => 4]) }}" class="block border rounded-lg p-4 bg-amber-100 text-yellow-95 
+    <!-- Section bannière -->
+    <section class="bg-beige py-20 text-center">
+        <h2 class="text-4xl font-bold text-black">Découvrez nos bijoux uniques</h2>
+        <p class="mt-4 text-gold">Des créations élégantes pour sublimer chaque moment.</p>
+        <a href="/produits" class="mt-6 inline-block bg-black text-beige py-2 px-4 rounded hover:bg-gold">Voir la collection</a>
+    </section>
+
+    <!-- Section produits vedettes -->
+    <section class="py-12 bg-beige">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold text-center text-black">Produits Vedettes</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <!-- Produit : Boucles -->
+                <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
+                    <img src="{{ asset('images/boucle1.png') }}" alt="Boucles" class="w-full h-48 object-cover rounded">
+                    <h4 class="text-lg font-bold text-black mt-4">Boucles Élégantes</h4>
+                    <span class="block text-gold font-semibold mt-4">29,99 €</span>
+                    <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
+                </div>
+
+                <!-- Produit : Bracelet -->
+                <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
+                    <img src="{{ asset('images/bracelet1.png') }}" alt="Bracelet" class="w-full h-48 object-cover rounded">
+                    <h4 class="text-lg font-bold text-black mt-4">Bracelet Raffiné</h4>
+                    <span class="block text-gold font-semibold mt-4">39,99 €</span>
+                    <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
+                </div>
+
+                <!-- Produit : Collier -->
+                <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
+                    <img src="{{ asset('images/collier1.png') }}" alt="Collier" class="w-full h-48 object-cover rounded">
+                    <h4 class="text-lg font-bold text-black mt-4">Collier Élégance</h4>
+                    <span class="block text-gold font-semibold mt-4">49,99 €</span>
+                    <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gold py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <p class="text-beige">&copy; 2024 Océan de Bijoux. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
