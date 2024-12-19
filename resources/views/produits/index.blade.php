@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', $categorie->categorie)
+@section('title', 'Tous les Produits')
 
 @section('content')
 <section class="py-8 bg-beige">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-black mb-8">Produits : {{ $categorie->categorie }}</h2>
+        <h2 class="text-4xl font-bold text-center text-black mb-8">Tous les Produits</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse ($produits as $produit)
