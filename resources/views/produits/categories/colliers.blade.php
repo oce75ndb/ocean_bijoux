@@ -3,19 +3,29 @@
 @section('title', 'Colliers')
 
 @section('content')
-<section class="py-8">
-    <div class="container mx-auto">
-        <h3 class="text-3xl font-bold mb-6">Colliers</h3>
-        <div class="border rounded-lg p-4">
-            <img src="resources/images/collier1.png" alt="Produit 1" class="mb-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach ($colliers as $collier)
-                    <h2>{{$collier->nom}}</h2>
-                @endforeach
-            </div>
-            <p class="text-gray-600">Prix : 22 €</p>
-            <a href="#" class="text-blue-500 hover:underline">Voir le produit</a>
+<section class="py-8 bg-beige">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center text-black mb-8">Tous les Colliers</h2>
+
+        <!-- Grille des produits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach ($produits as $produit)
+                <div class="bg-white border border-gold shadow-md rounded-lg p-4 transition-transform transform hover:scale-105">
+                    <img src="{{ asset($produit->image) }}" alt="{{ $produit->nom }}" class="w-full h-48 object-cover rounded mb-4">
+                    <h3 class="text-xl font-bold text-black">{{ $produit->nom }}</h3>
+                    <p class="text-gray-700 mb-2">{{ $produit->description }}</p>
+                    <p class="text-gold font-bold mb-4">{{ number_format($produit->prix, 2) }} €</p>
+                    <a href="{{ route('produit.show', ['id' => $produit->id]) }}" class="block bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
+                </div>
+            @endforeach
         </div>
+
+        <!-- Pagination -->
+        @if ($produits->hasPages())
+            <div class="mt-8 flex justify-center">
+                {{ $produits->links('pagination::tailwind') }}
+            </div>
+        @endif
     </div>
 </section>
 @endsection

@@ -17,7 +17,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             <!-- Produit : Boucles -->
             <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
-                <img src="{{ asset('images/boucle1.png') }}" alt="Boucles" class="w-full h-48 object-cover rounded">
+                <img src="{{ asset('images/boucles/boucle1.jpg') }}" alt="Boucles" class="w-full h-48 object-cover rounded">
                 <h4 class="text-lg font-bold text-black mt-4">Boucles Élégantes</h4>
                 <span class="block text-gold font-semibold mt-4">29,99 €</span>
                 <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
@@ -25,7 +25,7 @@
 
             <!-- Produit : Bracelet -->
             <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
-                <img src="{{ asset('images/bracelet1.png') }}" alt="Bracelet" class="w-full h-48 object-cover rounded">
+                <img src="{{ asset('images/bracelets/bracelet1.jpg') }}" alt="Bracelet" class="w-full h-48 object-cover rounded">
                 <h4 class="text-lg font-bold text-black mt-4">Bracelet Raffiné</h4>
                 <span class="block text-gold font-semibold mt-4">39,99 €</span>
                 <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>
@@ -33,7 +33,7 @@
 
             <!-- Produit : Collier -->
             <div class="bg-white shadow-md rounded-lg p-4 border border-gold">
-                <img src="{{ asset('images/collier1.png') }}" alt="Collier" class="w-full h-48 object-cover rounded">
+                <img src="{{ asset('images/colliers/collier1.jpg') }}" alt="Collier" class="w-full h-48 object-cover rounded">
                 <h4 class="text-lg font-bold text-black mt-4">Collier Élégance</h4>
                 <span class="block text-gold font-semibold mt-4">49,99 €</span>
                 <a href="#" class="block mt-4 bg-black text-beige py-2 px-4 rounded text-center hover:bg-gold">Voir le produit</a>

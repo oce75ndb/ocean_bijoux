@@ -3,22 +3,30 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View; // Pour utiliser View::composer ou View::share
+use App\Models\Categorie; // Modèle pour récupérer les catégories
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Enregistre les services de l'application.
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
-     * Bootstrap any application services.
+     * Démarre les services de l'application.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        // Partage des catégories avec le layout 'layouts.app'
+        View::composer('layouts.app', function ($view) {
+            $view->with('categories', Categorie::all());
+        });
+
+        // Si tu veux partager globalement (toutes les vues), décommente la ligne suivante :
+        // View::share('categories', Categorie::all());
     }
 }

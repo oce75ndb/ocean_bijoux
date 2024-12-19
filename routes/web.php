@@ -10,11 +10,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route pour afficher tous les produits avec filtres et recherche
 Route::get('/products', [ProduitController::class, 'index'])->name('produits.index');
 
-// Route pour afficher les produits par catégorie
-Route::get('/products/categories/{id}', [CategorieController::class, 'getProduitsParCategorie'])
-    ->name('categorie');
+// Route pour afficher la catégorie d'un produit
+Route::get('/products/categories/{id}', [CategorieController::class, 'getProduitsParCategorie'])->name('categorie.produits');
 
 // Route pour afficher les détails d'un produit
 Route::get('/products/{id}', [ProduitController::class, 'show'])->name('produit.show');
-
 ?>
