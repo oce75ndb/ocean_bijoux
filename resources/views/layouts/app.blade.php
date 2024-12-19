@@ -14,12 +14,12 @@
             <nav>
                 <ul class="flex space-x-4">
                     <li><a href="{{ route('home') }}" class="hover:text-yellow-950 text-yellow-800">Accueil</a></li>
-                    <li><a href="{{ route('colliers') }}" class="hover:text-yellow-950 text-yellow-800">Colliers</a></li>
-                    <li><a href="{{ route('bagues') }}" class="hover:text-yellow-950 text-yellow-800">Bagues</a></li>
-                    <li><a href="{{ route('bracelets') }}" class="hover:text-yellow-950 text-yellow-800">Bracelets</a></li>
-                    <li><a href="{{ route('boucles') }}" class="hover:text-yellow-950 text-yellow-800">Boucles d'Oreilles</a></li>
+                    <li><a href="{{ route('categorie', ['id' => 1]) }}" class="hover:text-yellow-950 text-yellow-800">Colliers</a></li>
+                    <li><a href="{{ route('categorie', ['id' => 2]) }}" class="hover:text-yellow-950 text-yellow-800">Bagues</a></li>
+                    <li><a href="{{ route('categorie', ['id' => 3]) }}" class="hover:text-yellow-950 text-yellow-800">Bracelets</a></li>
+                    <li><a href="{{ route('categorie', ['id' => 4]) }}" class="hover:text-yellow-950 text-yellow-800">Boucles d'Oreilles</a></li>
                 </ul>
-            </nav>
+            </nav>            
         </div>
     </header>
     
