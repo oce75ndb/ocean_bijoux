@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Categorie;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // Récupère quelques produits phares, par exemple les 6 premiers
+        // Récupère les 6 premiers produits phares
         $produits = Produit::take(6)->get();
 
-        return view('home', compact('produits'));
+        // Récupère toutes les catégories pour le menu
+        $categories = Categorie::all();
+
+        return view('home', compact('produits', 'categories'));
     }
 }

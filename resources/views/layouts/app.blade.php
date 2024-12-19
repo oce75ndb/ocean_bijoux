@@ -3,32 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>@yield('title', 'Océan de Bijoux')</title> <!-- Titre de la page -->
-    @vite('resources/css/app.css')
+    <title>@yield('title', 'Océan de Bijoux')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
 </head>
-<body class="font-sans bg-amber-50 text-yellow-950">
-    <header class="shadow bg-amber-100">
-        <div class="container mx-auto p-4">
-            <h1 class="text-2xl font-bold text-yellow-950">Océan de Bijoux</h1>
+<body class="font-serif bg-beige text-black">
+    <!-- En-tête -->
+    <header class="bg-gold shadow-md py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-black">Océan de Bijoux</h1>
             <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="{{ route('home') }}" class="hover:text-yellow-950 text-yellow-800">Accueil</a></li>
-                    <li><a href="{{ route('categorie', ['id' => 1]) }}" class="hover:text-yellow-950 text-yellow-800">Colliers</a></li>
-                    <li><a href="{{ route('categorie', ['id' => 2]) }}" class="hover:text-yellow-950 text-yellow-800">Bagues</a></li>
-                    <li><a href="{{ route('categorie', ['id' => 3]) }}" class="hover:text-yellow-950 text-yellow-800">Bracelets</a></li>
-                    <li><a href="{{ route('categorie', ['id' => 4]) }}" class="hover:text-yellow-950 text-yellow-800">Boucles d'Oreilles</a></li>
+                <ul class="flex space-x-6">
+                    <li><a href="{{ route('home') }}" class="text-black hover:text-beige">Accueil</a></li>
+                    @foreach ($categories as $categorie)
+                        <li><a href="{{ route('categorie', ['id' => $categorie->id]) }}" class="text-black hover:text-beige">{{ $categorie->categorie }}</a></li>
+                    @endforeach
                 </ul>
-            </nav>            
+            </nav>
         </div>
     </header>
-    
-    <main class="bg-yellow-50 py-8">
-        @yield('content') <!-- Contenu dynamique ici -->
+
+    <!-- Contenu principal -->
+    <main class="bg-beige">
+        @yield('content')
     </main>
-    
-    <footer class="text-center p-4 bg-amber-100 text-yellow-950">
-        &copy; 2024 Océan de Bijoux
+
+    <!-- Pied de page -->
+    <footer class="bg-gold py-6 text-center text-beige">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Océan de Bijoux - Tous droits réservés</p>
+        </div>
     </footer>
 </body>
 </html>
