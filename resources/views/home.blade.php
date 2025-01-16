@@ -11,7 +11,7 @@
 </section>
 
 <!-- Section produits vedettes -->
-<section class="py-12 bg-beige">
+<section class="bg-beige">
     <div class="container mx-auto px-4">
         <h3 class="text-2xl font-bold text-center text-black">Produits Vedettes</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">

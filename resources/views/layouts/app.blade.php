@@ -12,11 +12,14 @@
     <header class="bg-gold shadow-md py-6">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-3xl font-bold text-black">Océan de Bijoux</a>
-            <nav>
+            <nav class="flex space-x-4">
                 <ul class="flex space-x-4">
                     @foreach ($categories as $categorie)
                         <li><a href="{{ route('categorie.produits', ['id' => $categorie->id]) }}" class="hover:text-beige text-black">{{ $categorie->categorie }}</a></li>
                     @endforeach
+                </ul>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:text-beige text-black">Panier</a></li>
                 </ul>
             </nav>                       
         </div>
@@ -29,8 +32,8 @@
 
     <!-- Pied de page -->
     <footer class="bg-beige py-8">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="container mx-auto px-4 py-4 shadow-md rounded-lg border border-gold">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <!-- Colonne 1 : À Propos -->
                 <div>
                     <h4 class="text-lg font-bold text-black">À Propos</h4>
@@ -66,10 +69,7 @@
                 </div>
             </div>
         </div>
-    </footer>
-    
-    <footer class="bg-gold py-6 text-center text-beige">
-        <div class="container mx-auto px-4">
+        <div class="container text-center mx-auto px-4 py-4">
             <p>&copy; 2024 Océan de Bijoux - Tous droits réservés</p>
         </div>
     </footer>
