@@ -28,6 +28,46 @@
     </main>
 
     <!-- Pied de page -->
+    <footer class="bg-beige py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Colonne 1 : À Propos -->
+                <div>
+                    <h4 class="text-lg font-bold text-black">À Propos</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-black hover:underline">La marque</a></li>
+                        <li><a href="#" class="text-black hover:underline">L'atelier</a></li>
+                        <li><a href="#" class="text-black hover:underline">Le blog</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Colonne 2 : Liens utiles -->
+                <div>
+                    <h4 class="text-lg font-bold text-black">Liens utiles</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-black hover:underline">Retours et remboursements</a></li>
+                        <li><a href="#" class="text-black hover:underline">Mentions légales</a></li>
+                        <li><a href="#" class="text-black hover:underline">CGV</a></li>
+                    </ul>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-black hover:text-gold"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-black hover:text-gold"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+    
+                <!-- Colonne 3 : Contact -->
+                <div>
+                    <h4 class="text-lg font-bold text-black">Contact</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-black hover:underline">Nous écrire</a></li>
+                        <li><a href="#" class="text-black hover:underline">Collaborations</a></li>
+                        <li><a href="#" class="text-black hover:underline">Nous distribuer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
     <footer class="bg-gold py-6 text-center text-beige">
         <div class="container mx-auto px-4">
             <p>&copy; 2024 Océan de Bijoux - Tous droits réservés</p>
