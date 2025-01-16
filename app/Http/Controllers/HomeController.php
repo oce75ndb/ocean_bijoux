@@ -9,12 +9,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Récupère les 6 premiers produits phares
-        $produits = Produit::take(6)->get();
+        // Charger les produits avec les id 4, 15, et 25
+        $produitA = Produit::find(4);
+        $produitB = Produit::find(15);
+        $produitC = Produit::find(25);
 
         // Récupère toutes les catégories pour le menu
         $categories = Categorie::all();
 
-        return view('home', compact('produits', 'categories'));
-    }
+        // Envoyer les produits à la vue
+        return view('home', compact('produitA', 'produitB', 'produitC', 'categories'));
+        }
 }

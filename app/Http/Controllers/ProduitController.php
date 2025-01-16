@@ -35,6 +35,7 @@ class ProduitController extends Controller
      * @param int $id L'identifiant du produit.
      * @return \Illuminate\View\View
      */
+    
     public function show($id)
     {
         // Récupère le produit par son ID ou échoue avec une erreur 404
