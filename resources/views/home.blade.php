@@ -7,7 +7,7 @@
 <section class="bg-beige py-20 text-center">
     <h2 class="text-4xl font-bold text-black">Découvrez nos bijoux uniques</h2>
     <p class="mt-4 text-gold">Des créations élégantes pour sublimer chaque moment.</p>
-    <a href="/products" class="mt-6 inline-block bg-black text-beige py-2 px-4 rounded hover:bg-gold">Voir la collection</a>
+    <a href="/products" class="mt-6 inline-block bg-black text-beige py-2 px-4 rounded hover:bg-gold">Voir toute la collection</a>
 </section>
 
 <!-- Section produits vedettes -->
