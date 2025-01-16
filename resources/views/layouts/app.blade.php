@@ -11,10 +11,9 @@
     <!-- En-tête -->
     <header class="bg-gold shadow-md py-6">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-black">Océan de Bijoux</h1>
+            <a href="{{ route('home') }}" class="text-3xl font-bold text-black">Océan de Bijoux</a>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="{{ route('home') }}" class="hover:text-beige text-black">Accueil</a></li>
                     @foreach ($categories as $categorie)
                         <li><a href="{{ route('categorie.produits', ['id' => $categorie->id]) }}" class="hover:text-beige text-black">{{ $categorie->categorie }}</a></li>
                     @endforeach
