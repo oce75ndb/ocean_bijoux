@@ -35,10 +35,10 @@
                 <!-- Détails du produit -->
                 <h3 class="text-2xl font-bold mt-8 mb-4 text-black">Détails du produit</h3>
                 <div class="text-gray-700 text-right space-y-2">
-                    <p>Matériau : Or</p>
-                    <p>Style : Élégant et intemporel</p>
-                    <p>Dimensions : 2,5 cm x 2,5 cm</p>
-                    <p>Fabrication : Artisanale</p>
+                    <p>{{ $produit->materiau }}</p>
+                    <p>{{ $produit->style }}</p>
+                    <p>{{ $produit->dimensions }}</p>
+                    <p>{{ $produit->fabrication }}</p>
                 </div>
 
                 <!-- Bouton pour ajouter au panier -->
