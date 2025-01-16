@@ -11,7 +11,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $styles = ['Classique', 'Moderne', 'Vintage', 'Minimaliste', 'Fantaisie'];
-        $fabrications = ['Fabriqué à la main', 'Usinage industriel', 'Assemblage artisanal', 'Importé'];
+        $fabrications = ['Fabriqué à la main', 'Assemblage artisanal'];
         $dimensions = ['2cm x 2cm', '3cm x 3cm', '5cm x 5cm', '10cm x 2cm'];
 
         // Bagues
