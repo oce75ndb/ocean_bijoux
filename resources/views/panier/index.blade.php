@@ -19,10 +19,31 @@
                 @foreach($panier as $id => $article)
                     <tr>
                         <td class="border border-gray-300 px-4 py-2">{{ $article['nom'] }}</td>
-                        <td class="border border-gray-300 px-4 py-2">{{ $article['quantite'] }}</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <div class="flex items-center">
+                                <!-- Bouton "-" -->
+                                <form method="POST" action="{{ route('panier.decrementer', $id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" 
+                                        @if($article['quantite'] <= 1) disabled @endif>-</button>
+                                </form>
+            
+                                <!-- Quantité actuelle -->
+                                <span class="mx-2">{{ $article['quantite'] }}</span>
+            
+                                <!-- Bouton "+" -->
+                                <form method="POST" action="{{ route('panier.incrementer', $id) }}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded">+</button>
+                                </form>
+                            </div>
+                        </td>
                         <td class="border border-gray-300 px-4 py-2">{{ number_format($article['prix'], 2) }} €</td>
                         <td class="border border-gray-300 px-4 py-2">{{ number_format($article['prix'] * $article['quantite'], 2) }} €</td>
                         <td class="border border-gray-300 px-4 py-2">
+                            <!-- Bouton pour supprimer l'article -->
                             <form method="POST" action="{{ route('panier.supprimer', $id) }}">
                                 @csrf
                                 @method('DELETE')

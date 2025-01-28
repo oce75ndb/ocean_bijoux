@@ -1,90 +1,124 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark:bg-gold dark:text-brown">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Océan de Bijoux')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const toggleDarkMode = document.querySelector('#dark-mode-toggle');
+
+            // Charger le mode enregistré dans localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                htmlElement.classList.add('dark');
+            }
+
+            // Basculer entre light/dark mode
+            toggleDarkMode?.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        });
+    </script>
 </head>
-<body class="font-serif bg-beige text-black">
+<body class="font-serif bg-beige text-black dark:dark:bg-gold dark:text-brown">
     <!-- En-tête -->
-    <header class="bg-gold shadow-md py-6">
+    <header class="bg-gold dark:bg-brown shadow-md py-6">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="{{ route('home') }}" class="text-3xl font-bold text-black">Océan de Bijoux</a>
+            <a href="{{ route('home') }}" class="text-3xl font-bold text-black dark:text-beige">Océan de Bijoux</a>
             <nav class="flex space-x-4">
                 <ul class="flex space-x-4">
                     @foreach ($categories as $categorie)
-                        <li><a href="{{ route('categorie.produits', ['id' => $categorie->id]) }}" class="hover:text-beige text-black">{{ $categorie->categorie }}</a></li>
+                        <li>
+                            <a href="{{ route('categorie.produits', ['id' => $categorie->id]) }}" 
+                               class="hover:text-beige text-black dark:text-beige">
+                               {{ $categorie->categorie }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
                 <ul class="flex space-x-4">
                     <li>
-                        <a href="{{ route('panier.index') }}" class="hover:text-beige text-black">
+                        <a href="{{ route('panier.index') }}" 
+                           class="hover:text-beige text-black dark:text-beige">
                             Panier 
                             @if(session('panier') && count(session('panier')) > 0)
                                 ({{ count(session('panier')) }})
                             @endif
                         </a>
                     </li>
-                </ul>                               
-            </nav>                       
+                    <li>
+                        <!-- Bouton Dark Mode -->
+                        <button id="dark-mode-toggle" class=" bg-black dark:bg-beige text-beige dark:text-brown px-4 rounded text-center">
+                            ☽/☼
+                        </button>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <!-- Notification de succès -->
     @if (session('success'))
-        <div class="bg-green-500 text-white p-4 rounded mt-4 mx-auto max-w-4xl">
+        <div class="bg-green-500 text-beige p-4 rounded mt-4 mx-auto max-w-4xl">
             {{ session('success') }}
         </div>
     @endif
 
     <!-- Contenu principal -->
-    <main class="bg-beige">
+    <main class="bg-beige dark:bg-gold">
         @yield('content')
     </main>
 
     <!-- Pied de page -->
-    <footer class="bg-beige py-8">
-        <div class="container mx-auto px-4 py-4 shadow-md rounded-lg border border-gold">
+    <footer class="bg-beige dark:bg-gold py-8">
+        <div class="container mx-auto px-4 py-4 shadow-md rounded-lg border border-gold dark:border-brown">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <!-- Colonne 1 : À Propos -->
                 <div>
-                    <h4 class="text-lg font-bold text-black">À Propos</h4>
+                    <h4 class="text-lg font-bold text-black dark:text-brown">À Propos</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black hover:underline">La marque</a></li>
-                        <li><a href="#" class="text-black hover:underline">L'atelier</a></li>
-                        <li><a href="#" class="text-black hover:underline">Le blog</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">La marque</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">L'atelier</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Le blog</a></li>
                     </ul>
                 </div>
     
                 <!-- Colonne 2 : Liens utiles -->
                 <div>
-                    <h4 class="text-lg font-bold text-black">Liens utiles</h4>
+                    <h4 class="text-lg font-bold text-black dark:text-brown">Liens utiles</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black hover:underline">Retours et remboursements</a></li>
-                        <li><a href="#" class="text-black hover:underline">Mentions légales</a></li>
-                        <li><a href="#" class="text-black hover:underline">CGV</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Retours et remboursements</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Mentions légales</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">CGV</a></li>
                     </ul>
                     <div class="mt-4 flex space-x-4">
-                        <a href="#" class="text-black hover:text-gold"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-black hover:text-gold"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-black dark:text-beige hover:text-gold"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-black dark:text-beige hover:text-gold"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
     
                 <!-- Colonne 3 : Contact -->
                 <div>
-                    <h4 class="text-lg font-bold text-black">Contact</h4>
+                    <h4 class="text-lg font-bold text-black dark:text-brown">Contact</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black hover:underline">Nous écrire</a></li>
-                        <li><a href="#" class="text-black hover:underline">Collaborations</a></li>
-                        <li><a href="#" class="text-black hover:underline">Nous distribuer</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Nous écrire</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Collaborations</a></li>
+                        <li><a href="#" class="text-black dark:text-beige hover:underline">Nous distribuer</a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container text-center mx-auto px-4 py-4">
-            <p>&copy; 2024 Océan de Bijoux - Tous droits réservés</p>
+            <p class="text-black dark:text-brown">&copy; 2024 Océan de Bijoux - Tous droits réservés</p>
         </div>
     </footer>
 </body>

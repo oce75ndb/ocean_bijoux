@@ -32,4 +32,14 @@ Route::delete('/panier/{id}', [PanierController::class, 'supprimer'])->name('pan
 
 // Route pour le checkout
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+// Route pour +1 au panier
+Route::patch('/panier/incrementer/{id}', [PanierController::class, 'incrementer'])->name('panier.incrementer');
+
+// Route pour -1 au panier
+Route::patch('/panier/decrementer/{id}', [PanierController::class, 'decrementer'])->name('panier.decrementer');
+
+// Route pour supprimer un par un les produits du panier
+Route::delete('/panier/supprimer/{id}', [PanierController::class, 'supprimer'])->name('panier.supprimer');
+
 ?>

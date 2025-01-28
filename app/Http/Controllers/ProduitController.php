@@ -18,16 +18,19 @@ class ProduitController extends Controller
 
         // Récupère les produits avec recherche et filtrage
         $produits = Produit::when($request->search, function ($query, $search) {
-                $query->where('nom', 'like', '%' . $search . '%');
-            })
-            ->when($request->categorie, function ($query, $categorie) {
-                $query->where('categorie_id', $categorie);
-            })
-            ->paginate(12); // Pagination avec 12 produits par page
+                    $query->where('nom', 'like', '%' . $search . '%')
+                        ->orWhere('description', 'like', '%' . $search . '%'); // Recherche aussi dans la description
+                })
+                ->when($request->categorie, function ($query, $categorie) {
+                    $query->where('categorie_id', $categorie);
+                })
+                ->paginate(12) // Pagination avec 12 produits par page
+                ->appends($request->all()); // Conserve les paramètres de recherche et de filtrage
 
         // Retourne la vue des produits avec les données
         return view('produits.index', compact('produits', 'categories'));
     }
+
 
     /**
      * Affiche les détails d'un produit spécifique.

@@ -3,7 +3,7 @@
 @section('title', $produit->nom)
 
 @section('content')
-<section class="py-12 bg-beige">
+<section class="py-12">
     <div class="container mx-auto px-8">
         <!-- Section principale -->
         <div class="bg-white shadow-md rounded-lg overflow-hidden flex items-center space-x-8 p-8">
@@ -15,7 +15,7 @@
             <!-- Informations du produit -->
             <div class="w-2/3 text-right">
                 <!-- Nom du produit -->
-                <h2 class="text-4xl font-bold mb-4 text-black">{{ $produit->nom }}</h2>
+                <h2 class="text-4xl font-bold mb-4 text-black dark:text-brown">{{ $produit->nom }}</h2>
                 
                 <!-- Prix -->
                 <p class="text-3xl font-bold text-gold mb-4">{{ number_format($produit->prix, 2) }} €</p>
@@ -30,11 +30,11 @@
                 </p>
 
                 <!-- Description -->
-                <p class="text-gray-700 text-lg mb-6 leading-relaxed">{{ $produit->description }}</p>
+                <p class="text-black dark:text-brown text-lg mb-6 leading-relaxed">{{ $produit->description }}</p>
 
                 <!-- Détails du produit -->
-                <h3 class="text-2xl font-bold mt-8 mb-4 text-black">Détails du produit</h3>
-                <div class="text-gray-700 text-right space-y-2">
+                <h3 class="text-2xl font-bold mt-8 mb-4 text-black dark:text-brown">Détails du produit</h3>
+                <div class="text-black dark:text-brown text-right space-y-2">
                     <p>Matériaux: {{ $produit->materiau }}</p>
                     <p>Style: {{ $produit->style }}</p>
                     <p>Dimensions: {{ $produit->dimensions }}</p>

@@ -51,14 +51,14 @@ class PanierController extends Controller
     {
         $panier = session()->get('panier', []);
 
-        // Vérifier si le produit existe dans le panier
         if (isset($panier[$id])) {
-            unset($panier[$id]); // Supprimer l'élément
-            session()->put('panier', $panier); // Mettre à jour la session
+            unset($panier[$id]);
+            session()->put('panier', $panier);
         }
 
-        return redirect()->route('panier.index')->with('success', 'Produit supprimé du panier');
+        return redirect()->route('panier.index')->with('success', 'Article supprimé du panier !');
     }
+
 
     public function vider()
     {
@@ -66,4 +66,33 @@ class PanierController extends Controller
 
         return redirect()->route('panier.index')->with('success', 'Panier vidé avec succès !');
     }
+
+    public function incrementer($id)
+    {
+        $panier = session()->get('panier', []);
+
+        if (isset($panier[$id])) {
+            $panier[$id]['quantite'] += 1;
+            session()->put('panier', $panier);
+        }
+
+        return redirect()->route('panier.index')->with('success', 'Quantité augmentée !');
+    }
+
+    public function decrementer($id)
+    {
+        $panier = session()->get('panier', []);
+
+        if (isset($panier[$id]) && $panier[$id]['quantite'] > 1) {
+            $panier[$id]['quantite'] -= 1;
+            session()->put('panier', $panier);
+        } elseif (isset($panier[$id])) {
+            // Si la quantité est 1, supprime l'article
+            unset($panier[$id]);
+            session()->put('panier', $panier);
+        }
+
+        return redirect()->route('panier.index')->with('success', 'Quantité diminuée !');
+    }
+
 }
