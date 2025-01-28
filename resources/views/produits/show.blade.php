@@ -35,17 +35,25 @@
                 <!-- Détails du produit -->
                 <h3 class="text-2xl font-bold mt-8 mb-4 text-black">Détails du produit</h3>
                 <div class="text-gray-700 text-right space-y-2">
-                    <p>{{ $produit->materiau }}</p>
-                    <p>{{ $produit->style }}</p>
-                    <p>{{ $produit->dimensions }}</p>
-                    <p>{{ $produit->fabrication }}</p>
+                    <p>Matériaux: {{ $produit->materiau }}</p>
+                    <p>Style: {{ $produit->style }}</p>
+                    <p>Dimensions: {{ $produit->dimensions }}</p>
+                    <p>Fabrication: {{ $produit->fabrication }}</p>
                 </div>
 
                 <!-- Bouton pour ajouter au panier -->
                 @if ($produit->stock > 0)
-                    <div class="mt-6">
-                        <a href="#" class="bg-gold text-beige py-3 px-8 rounded hover:bg-gold transition-all text-lg font-semibold inline-block">Ajouter au panier</a>
-                    </div>
+                <div class="mt-6">
+                    <form method="POST" action="{{ route('panier.ajouter') }}">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $produit->id }}">
+                        <input type="hidden" name="nom" value="{{ $produit->nom }}">
+                        <input type="hidden" name="prix" value="{{ $produit->prix }}">
+                        <button type="submit" class="bg-gold text-beige py-3 px-8 rounded hover:bg-gold transition-all text-lg font-semibold inline-block">
+                            Ajouter au panier
+                        </button>
+                    </form>
+                </div>
                 @endif
             </div>
         </div>

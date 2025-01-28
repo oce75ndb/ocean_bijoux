@@ -19,11 +19,25 @@
                     @endforeach
                 </ul>
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-beige text-black">Panier</a></li>
-                </ul>
+                    <li>
+                        <a href="{{ route('panier.index') }}" class="hover:text-beige text-black">
+                            Panier 
+                            @if(session('panier') && count(session('panier')) > 0)
+                                ({{ count(session('panier')) }})
+                            @endif
+                        </a>
+                    </li>
+                </ul>                               
             </nav>                       
         </div>
     </header>
+
+    <!-- Notification de succès -->
+    @if (session('success'))
+        <div class="bg-green-500 text-white p-4 rounded mt-4 mx-auto max-w-4xl">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <!-- Contenu principal -->
     <main class="bg-beige">
