@@ -8,9 +8,7 @@ use App\Models\Categorie;
 
 class ProduitController extends Controller
 {
-    /**
-     * Affiche tous les produits de la boutique avec filtres, recherche et pagination.
-     */
+    // Affiche tous les produits de la boutique avec filtres, recherche et pagination.
     public function index(Request $request)
     {
         // Récupère toutes les catégories pour le filtre
@@ -30,14 +28,6 @@ class ProduitController extends Controller
         // Retourne la vue des produits avec les données
         return view('produits.index', compact('produits', 'categories'));
     }
-
-
-    /**
-     * Affiche les détails d'un produit spécifique.
-     *
-     * @param int $id L'identifiant du produit.
-     * @return \Illuminate\View\View
-     */
     
     public function show($id)
     {

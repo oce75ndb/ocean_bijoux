@@ -29,17 +29,34 @@
         });
     </script>
 </head>
-<body class="font-serif bg-beige text-black dark:dark:bg-gold dark:text-brown">
+<body class="font-serif bg-beige text-black dark:bg-gold dark:text-brown min-h-screen flex flex-col">
     <!-- En-tête -->
     <header class="bg-gold dark:bg-brown shadow-md py-6">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-3xl font-bold text-black dark:text-beige">Océan de Bijoux</a>
             <nav class="flex space-x-4">
-                <ul class="flex space-x-4">
+                <!-- Barre de recherche -->
+                <form action="{{ route('produits.index') }}" method="GET" class="flex items-center border border-beige rounded-md">
+                    <!-- Input de recherche -->
+                    <input 
+                        type="text" 
+                        name="search" 
+                        placeholder="Rechercher un produit..." 
+                        value="{{ request('search') }}" 
+                        class="px-4 rounded-l focus:outline-none focus:ring focus:border-beige bg-white dark:text-beige"
+                    />
+                    <!-- Bouton de recherche -->
+                    <button 
+                        type="submit" 
+                        class="px-4 bg-black text-beige dark:bg-beige dark:text-black rounded-r">
+                        🔍︎
+                    </button>
+                </form>
+                <ul class="flex space-x-4 ">
                     @foreach ($categories as $categorie)
                         <li>
                             <a href="{{ route('categorie.produits', ['id' => $categorie->id]) }}" 
-                               class="hover:text-beige text-black dark:text-beige">
+                               class="hover:text-beige text-black dark:text-beige ">
                                {{ $categorie->categorie }}
                             </a>
                         </li>
@@ -48,7 +65,7 @@
                 <ul class="flex space-x-4">
                     <li>
                         <a href="{{ route('panier.index') }}" 
-                           class="hover:text-beige text-black dark:text-beige">
+                           class="hover:text-beige text-black dark:text-beige ">
                             Panier 
                             @if(session('panier') && count(session('panier')) > 0)
                                 ({{ count(session('panier')) }})
@@ -57,7 +74,7 @@
                     </li>
                     <li>
                         <!-- Bouton Dark Mode -->
-                        <button id="dark-mode-toggle" class=" bg-black dark:bg-beige text-beige dark:text-brown px-4 rounded text-center">
+                        <button id="dark-mode-toggle" class=" bg-black dark:bg-beige text-beige dark:text-brown px-4 rounded text-center transition-transform transform hover:scale-105">
                             ☽/☼
                         </button>
                     </li>
@@ -74,7 +91,7 @@
     @endif
 
     <!-- Contenu principal -->
-    <main class="bg-beige dark:bg-gold">
+    <main class="flex-grow bg-beige dark:bg-gold">
         @yield('content')
     </main>
 
@@ -86,33 +103,31 @@
                 <div>
                     <h4 class="text-lg font-bold text-black dark:text-brown">À Propos</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">La marque</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">L'atelier</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Le blog</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">La marque</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">L'atelier</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Le blog</a></li>
                     </ul>
                 </div>
-    
                 <!-- Colonne 2 : Liens utiles -->
                 <div>
                     <h4 class="text-lg font-bold text-black dark:text-brown">Liens utiles</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Retours et remboursements</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Mentions légales</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">CGV</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Retours et remboursements</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Mentions légales</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">CGV</a></li>
                     </ul>
                     <div class="mt-4 flex space-x-4">
                         <a href="#" class="text-black dark:text-beige hover:text-gold"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-black dark:text-beige hover:text-gold"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-    
                 <!-- Colonne 3 : Contact -->
                 <div>
                     <h4 class="text-lg font-bold text-black dark:text-brown">Contact</h4>
                     <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Nous écrire</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Collaborations</a></li>
-                        <li><a href="#" class="text-black dark:text-beige hover:underline">Nous distribuer</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Nous écrire</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Collaborations</a></li>
+                        <li><a href="#" class="text-gold dark:text-beige hover:underline">Nous distribuer</a></li>
                     </ul>
                 </div>
             </div>
