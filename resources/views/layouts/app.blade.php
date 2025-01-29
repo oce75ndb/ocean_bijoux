@@ -40,7 +40,7 @@
                     <!-- Input de recherche -->
                     <input 
                         type="text" 
-                        name="search" 
+                        name="search"
                         placeholder="Rechercher un produit..." 
                         value="{{ request('search') }}" 
                         class="px-4 rounded-l focus:outline-none focus:ring focus:border-beige bg-white dark:text-beige"
@@ -65,8 +65,8 @@
                 <ul class="flex space-x-4">
                     <li>
                         <a href="{{ route('panier.index') }}" 
-                           class="hover:text-beige text-black dark:text-beige ">
-                            Panier 
+                           class="font-bold hover:text-beige text-black dark:text-beige ">
+                           Panier
                             @if(session('panier') && count(session('panier')) > 0)
                                 ({{ count(session('panier')) }})
                             @endif
